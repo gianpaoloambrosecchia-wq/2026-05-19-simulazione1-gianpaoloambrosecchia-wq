@@ -83,19 +83,20 @@ class Model:
 
     def getInfluenza(self):
 
-        topArtista = max(self._graph.nodes, key = lambda x: x.pesoArchiUscenti-x.pesoArchiEntranti)
-        influenza = topArtista.pesoArchiUscenti - topArtista.pesoArchiEntranti
-        return topArtista, influenza
+        #topArtista = max(self._graph.nodes, key = lambda x: x.pesoArchiUscenti-x.pesoArchiEntranti)
+        #influenza = topArtista.pesoArchiUscenti - topArtista.pesoArchiEntranti
+        #return topArtista, influenza
 
         # METODO PER CALCOLARE LA DIFFERENZA TRA IL PESO DEGLI ARCHI USCENTI E QUELLO DEGLI ARCHI ENTRANTI
         # DI UN NODO (USANDO nx)
-        # influenza = {}
-        #for node in self._graph.nodes:
-            #peso_uscenti = sum(data["weight"] for _, _, data in self._graph.out_edges(node, data=True))
-            #peso_entranti = sum(data["weight"] for _, _, data in self._graph.in_edges(node, data=True))
-            #influenza[node] = peso_uscenti - peso_entranti
+        influenza = {}
+        for node in self._graph.nodes:
+            peso_uscenti = sum(data["weight"] for _, _, data in self._graph.out_edges(node, data=True))
+            peso_entranti = sum(data["weight"] for _, _, data in self._graph.in_edges(node, data=True))
+            influenza[node] = peso_uscenti - peso_entranti
 
-        #return influenza
+        artistaPiuInfluente = max(influenza, key=lambda x: influenza[x])
+        return artistaPiuInfluente, influenza[artistaPiuInfluente]
 
     def getTopArchi(self):
         if (len(self._graph.edges)) < 5:
