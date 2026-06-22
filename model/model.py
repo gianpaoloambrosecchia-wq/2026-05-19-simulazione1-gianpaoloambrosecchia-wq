@@ -26,7 +26,7 @@ class Model:
             self._bestSol = copy.deepcopy(parziale)
             self._bestCosto = self._calcolaCosto(parziale)
 
-        for v in self._graph.neighbors(parziale[-1]):
+        for v in self._graph.successors(parziale[-1]):
 
             peso_arco_corrente = self._graph[parziale[-1]][v]["weight"]
 

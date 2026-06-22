@@ -98,4 +98,4 @@ class Controller:
 
         self._choiceArtist = e.control.data
 
-        print(f"Selezionato il team {self._choiceArtist}")
+        print(f"Selezionato l'artista {self._choiceArtist}")
