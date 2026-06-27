@@ -104,3 +104,7 @@ class Model:
         # RICORDA!!!! data=True altrimenti non puoi considerare il peso
         topArchi = sorted(self._graph.edges(data=True), key=lambda edge: edge[2]["weight"], reverse=True)
         return topArchi[0:5]
+
+
+
+
